@@ -1,0 +1,8 @@
+﻿@namespace CSStack.PrimeBlazor
+
+<div @attributes="DialogService.BackgroundParameters">
+    @foreach (var dialogContext in _dialogContexts)
+    {
+        <DynamicComponent Type="dialogContext.ComponentType" Parameters="dialogContext.Parameters"/>
+    }
+</div>
