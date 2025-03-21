@@ -9,6 +9,11 @@
     <Authors>Uta Sugane</Authors>
     <Description>Blazor向けRCLの開発を支援するパッケージ</Description>
     <PackageIcon>CSStack.png</PackageIcon>
+    <RepositoryUrl>https://github.com/Uta-member/CSStack.PrimeBlazor</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Blazor;razor;csharp;C#;CSStack;</PackageTags>
+    <PackAsTool>False</PackAsTool>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
 
