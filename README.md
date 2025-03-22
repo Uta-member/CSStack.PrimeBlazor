@@ -1,8 +1,10 @@
 # CSStack.PrimeBlazor
-PrimeBlazor��Blazor������UI�R���|�[�l���g���C�u���������ۂɕ֗��ȃR���|�[�l���g���܂Ƃ߂��AUI�R���|�[�l���g�J���̂��߂̃��C�u�����ł��B
-�ł������C#��Blazoe�̎d�l�ȊO�̂��̂Ɉˑ������A�J�X�^�}�C�Y���̍����v���[���ȃR���|�[�l���g��ڎw���ĊJ�����s���Ă��܂��B
 
-# ���`�x�[�V����
-��{�I��HTML/CSS�����ŊȒP�Ɏ����ł���悤�Ȃ��͎̂������܂���B
-�^�[�Q�b�g�̓_�C�A���O��ʒm�A�c�[���`�b�v�Ȃǂ̂悤��JavaScript�Ȃǂ��g��Ȃ��Ɠ�����̂��������Ă����\��ł��B
-�ł������C#�Ŏ������s���A�ǂ����Ă������_�����O��łȂ��Ə������ł��Ȃ��悤�Ȃ��̂���JavaScript���g���悤�ȕ������ł��B
+PrimeBlazor は Blazor 向けの UI コンポーネントライブラリを作る際に便利なコンポーネントをまとめた、UI コンポーネント開発のためのライブラリです。
+できる限り C#と Blazoe の仕様以外のものに依存せず、カスタマイズ性の高いプレーンなコンポーネントを目指して開発を行っています。
+
+# モチベーション
+
+基本的に HTML/CSS だけで簡単に実装できるようなものは実装しません。
+ターゲットはダイアログや通知、ツールチップなどのように JavaScript などを使わないと難しいものを実装していく予定です。
+できる限り C#で実装を行い、どうしてもレンダリング後でないと処理あできないようなものだけ JavaScript を使うような方向性です。
