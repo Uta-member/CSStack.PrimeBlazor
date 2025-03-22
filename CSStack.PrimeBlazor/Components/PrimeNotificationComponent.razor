@@ -1,0 +1,8 @@
+﻿@namespace CSStack.PrimeBlazor
+
+<div @attributes="NotificationService.BackgroundParameters">
+    @foreach (var notificationContext in _notificationContexts)
+    {
+        <DynamicComponent Type="notificationContext.ComponentType" Parameters="notificationContext.Parameters" />
+    }
+</div>
