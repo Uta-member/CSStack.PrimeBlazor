@@ -34,7 +34,7 @@ namespace CSStack.PrimeBlazor
         /// <param name="hiddenClassName">非表示時のクラス名</param>
         /// <param name="autoCloseCheckSpan">自動で閉じる通知のチェックスパン（ms）</param>
         /// <param name="useTimer">自動で通知を閉じるタイマーをサービス側で動作させるかどうか</param>
-        public PrimeNotificationService(
+        protected PrimeNotificationService(
             Dictionary<string, object> backgroundParameters,
             string? showClassName = null,
             string? hiddenClassName = null,
@@ -48,7 +48,7 @@ namespace CSStack.PrimeBlazor
 
             if(useTimer)
             {
-                _timer = new Timer(
+                _timer = new(
                     _ => CloseTimeoutNotifications(),
                     null,
                     _autoCloseCheckSpan,
@@ -155,7 +155,7 @@ namespace CSStack.PrimeBlazor
         public ObservableCollection<PrimeNotificationContext> NotificationContexts
         {
             get;
-        } = new ObservableCollection<PrimeNotificationContext>();
+        } = new();
 
         /// <summary>
         /// 表示時のクラス名

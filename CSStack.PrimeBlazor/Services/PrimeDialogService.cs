@@ -23,7 +23,7 @@ namespace CSStack.PrimeBlazor
         /// <param name="backgroundParameters">背景コンポーネントに渡すパラメータ</param>
         /// <param name="showClassName">表示時のクラス名</param>
         /// <param name="hiddenClassName">非表示時のクラス名</param>
-        public PrimeDialogService(
+        protected PrimeDialogService(
             Dictionary<string, object> backgroundParameters,
             string? showClassName = null,
             string? hiddenClassName = null)
@@ -100,7 +100,7 @@ namespace CSStack.PrimeBlazor
         public ObservableCollection<PrimeDialogContext> DialogContexts
         {
             get;
-        } = new ObservableCollection<PrimeDialogContext>();
+        } = new();
 
         /// <summary>
         /// 非表示時のクラス名
