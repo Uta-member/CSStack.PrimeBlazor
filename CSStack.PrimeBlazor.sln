@@ -10,6 +10,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSStack.PrimeBlazor.PageManager", "CSStack.PrimeBlazor.PageManager", "{DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSStack.PrimeBlazor.PageManager.Abstractions", "CSStack.PrimeBlazor.PageManager\CSStack.PrimeBlazor.PageManager.Abstractions\CSStack.PrimeBlazor.PageManager.Abstractions.csproj", "{5D896132-F989-4D0D-AFEE-B6433B3DA17C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSStack.PrimeBlazor.PageManager.Generator", "CSStack.PrimeBlazor.PageManager\CSStack.PrimeBlazor.PageManager.Generator\CSStack.PrimeBlazor.PageManager.Generator.csproj", "{B753E81A-08B1-4A99-9AC1-19BC8BBAEBAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSStack.PrimeBlazor.PageManager", "CSStack.PrimeBlazor.PageManager\CSStack.PrimeBlazor.PageManager\CSStack.PrimeBlazor.PageManager.csproj", "{ECC99102-14B8-4898-8DEF-E0AA4412203F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSStack.PrimeBlazor.PageManager.TestApp", "CSStack.PrimeBlazor.PageManager\CSStack.PrimeBlazor.PageManager.TestApp\CSStack.PrimeBlazor.PageManager.TestApp\CSStack.PrimeBlazor.PageManager.TestApp.csproj", "{5751703B-B05F-4888-921D-AFFF22ED7643}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSStack.PrimeBlazor.PageManager.TestApp.Client", "CSStack.PrimeBlazor.PageManager\CSStack.PrimeBlazor.PageManager.TestApp\CSStack.PrimeBlazor.PageManager.TestApp.Client\CSStack.PrimeBlazor.PageManager.TestApp.Client.csproj", "{A3865AE5-7E96-4582-AFF9-0069DED3DFCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +32,36 @@ Global
 		{53CDD7EC-AD37-427A-A853-B175FE32FA11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53CDD7EC-AD37-427A-A853-B175FE32FA11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53CDD7EC-AD37-427A-A853-B175FE32FA11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D896132-F989-4D0D-AFEE-B6433B3DA17C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D896132-F989-4D0D-AFEE-B6433B3DA17C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D896132-F989-4D0D-AFEE-B6433B3DA17C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D896132-F989-4D0D-AFEE-B6433B3DA17C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B753E81A-08B1-4A99-9AC1-19BC8BBAEBAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B753E81A-08B1-4A99-9AC1-19BC8BBAEBAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B753E81A-08B1-4A99-9AC1-19BC8BBAEBAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B753E81A-08B1-4A99-9AC1-19BC8BBAEBAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECC99102-14B8-4898-8DEF-E0AA4412203F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECC99102-14B8-4898-8DEF-E0AA4412203F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECC99102-14B8-4898-8DEF-E0AA4412203F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECC99102-14B8-4898-8DEF-E0AA4412203F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5751703B-B05F-4888-921D-AFFF22ED7643}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5751703B-B05F-4888-921D-AFFF22ED7643}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5751703B-B05F-4888-921D-AFFF22ED7643}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5751703B-B05F-4888-921D-AFFF22ED7643}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3865AE5-7E96-4582-AFF9-0069DED3DFCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3865AE5-7E96-4582-AFF9-0069DED3DFCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3865AE5-7E96-4582-AFF9-0069DED3DFCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3865AE5-7E96-4582-AFF9-0069DED3DFCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5D896132-F989-4D0D-AFEE-B6433B3DA17C} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
+		{B753E81A-08B1-4A99-9AC1-19BC8BBAEBAA} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
+		{ECC99102-14B8-4898-8DEF-E0AA4412203F} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
+		{5751703B-B05F-4888-921D-AFFF22ED7643} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
+		{A3865AE5-7E96-4582-AFF9-0069DED3DFCE} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2D8D2997-1842-4844-BF9F-1B46F7A0719E}
