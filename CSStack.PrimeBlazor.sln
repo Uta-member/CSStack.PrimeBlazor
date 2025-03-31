@@ -10,12 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSStack.PrimeBlazor.PageManager", "CSStack.PrimeBlazor.PageManager\CSStack.PrimeBlazor.PageManager.csproj", "{4ACDD1A8-8A10-4EA1-B884-DF83A5C1BF89}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSStack.PrimeBlazor.PageManager.TestApp", "CSStack.PrimeBlazor.PageManager.TestApp\CSStack.PrimeBlazor.PageManager.TestApp\CSStack.PrimeBlazor.PageManager.TestApp.csproj", "{70508DC2-D92A-4314-8FBC-CB8D6F3B6765}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSStack.PrimeBlazor.PageManager.TestApp.Client", "CSStack.PrimeBlazor.PageManager.TestApp\CSStack.PrimeBlazor.PageManager.TestApp.Client\CSStack.PrimeBlazor.PageManager.TestApp.Client.csproj", "{F712BC9E-E062-4144-80EE-FF04C573F2E3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,18 +20,6 @@ Global
 		{53CDD7EC-AD37-427A-A853-B175FE32FA11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53CDD7EC-AD37-427A-A853-B175FE32FA11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53CDD7EC-AD37-427A-A853-B175FE32FA11}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4ACDD1A8-8A10-4EA1-B884-DF83A5C1BF89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4ACDD1A8-8A10-4EA1-B884-DF83A5C1BF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4ACDD1A8-8A10-4EA1-B884-DF83A5C1BF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4ACDD1A8-8A10-4EA1-B884-DF83A5C1BF89}.Release|Any CPU.Build.0 = Release|Any CPU
-		{70508DC2-D92A-4314-8FBC-CB8D6F3B6765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{70508DC2-D92A-4314-8FBC-CB8D6F3B6765}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{70508DC2-D92A-4314-8FBC-CB8D6F3B6765}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{70508DC2-D92A-4314-8FBC-CB8D6F3B6765}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F712BC9E-E062-4144-80EE-FF04C573F2E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F712BC9E-E062-4144-80EE-FF04C573F2E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F712BC9E-E062-4144-80EE-FF04C573F2E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F712BC9E-E062-4144-80EE-FF04C573F2E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

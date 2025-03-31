@@ -1,9 +1,0 @@
-{
-  "profiles": {
-    "Generators": {
-      "commandName": "DebugRoslynComponent",
-      "targetProject": "..\\CSStack.PrimeBlazor.PageManager.TestApp\\CSStack.PrimeBlazor.PageManager.TestApp.Client\\CSStack.PrimeBlazor.PageManager.TestApp.Client.csproj"
-    }
-  },
-  "$schema": "http://json.schemastore.org/launchsettings.json"
-}
