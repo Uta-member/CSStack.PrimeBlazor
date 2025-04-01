@@ -2,7 +2,7 @@
 
 namespace CSStack.PrimeBlazor.PageManager.TestApp.Components.Pages
 {
-    public partial class TestPag : ComponentBase
+    public partial class TestPage : ComponentBase
     {
     }
 }

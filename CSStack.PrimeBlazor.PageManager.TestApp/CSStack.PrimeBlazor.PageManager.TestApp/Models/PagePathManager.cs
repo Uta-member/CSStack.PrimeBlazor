@@ -7,7 +7,7 @@ namespace CSStack.PrimeBlazor.PageManager.TestApp.Models
     {
         [BlazorPage<Home>]
         public const string Home = "/";
-        [BlazorPage<TestPag>]
+        [BlazorPage<TestPage>]
         public const string TestPag = "/test";
     }
 }
