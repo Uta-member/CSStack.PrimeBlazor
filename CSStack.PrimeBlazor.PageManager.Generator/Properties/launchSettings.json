@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BlazorTest": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\CSStack.PrimeBlazor.PageManager.TestApp\\CSStack.PrimeBlazor.PageManager.TestApp\\CSStack.PrimeBlazor.PageManager.TestApp.csproj"
+    }
+  }
+}

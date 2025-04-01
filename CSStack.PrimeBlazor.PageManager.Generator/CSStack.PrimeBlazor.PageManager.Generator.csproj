@@ -2,14 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-	  <IsPackable>true</IsPackable>
-	  <IncludeBuildOutput>false</IncludeBuildOutput>
-	  <IncludeContentInPack>true</IncludeContentInPack>
+	<LangVersion>latest</LangVersion>
+	<IsRoslynComponent>true</IsRoslynComponent>
+	<AnalyzerLanguage>cs</AnalyzerLanguage>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.13.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CSStack.PrimeBlazor.PageManager.Abstractions\CSStack.PrimeBlazor.PageManager.Abstractions.csproj" />
-    <ProjectReference Include="..\CSStack.PrimeBlazor.PageManager.Generator\CSStack.PrimeBlazor.PageManager.Generator.csproj" />
   </ItemGroup>
 
 </Project>
