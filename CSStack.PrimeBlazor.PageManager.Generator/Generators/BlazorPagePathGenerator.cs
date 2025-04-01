@@ -102,6 +102,7 @@ namespace CSStack.PrimeBlazor.PageManager
         /// <returns></returns>
         private static object? GetConstantValue(IPropertySymbol propertySymbol)
         {
+            // TODO: ここで名前空間も確認した方がいいかも
             var constantValue = propertySymbol.GetAttributes()
                 .FirstOrDefault(attr => attr.AttributeClass?.Name == "BlazorPageAttribute")
                 ?.ConstructorArguments.FirstOrDefault().Value;
@@ -115,6 +116,7 @@ namespace CSStack.PrimeBlazor.PageManager
         /// <param name="context"></param>
         private void RegisterAttributes(IncrementalGeneratorInitializationContext context)
         {
+            // これをやらないと、使う側で属性が見つからないと言われる
             context.RegisterPostInitializationOutput(
                 static context =>
                 {
@@ -164,6 +166,7 @@ namespace CSStack.PrimeBlazor.PageManager
                 .Select((context, token) => ExtractPathMappings(context));
 
             // マッピング情報を使ってコードを生成
+            // 第1引数の型が第2引数のコールバックの第2引数の型になる
             context.RegisterSourceOutput(source, Emit);
         }
     }
