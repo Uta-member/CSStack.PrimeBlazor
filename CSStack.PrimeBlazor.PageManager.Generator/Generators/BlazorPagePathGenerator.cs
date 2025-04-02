@@ -11,12 +11,30 @@ namespace CSStack.PrimeBlazor.PageManager
     [Generator(LanguageNames.CSharp)]
     public class BlazorPagePathGenerator : IIncrementalGenerator
     {
+        /// <inheritdoc/>
+        public void Initialize(IncrementalGeneratorInitializationContext context)
+        {
+            // 属性を使えるように登録
+            RegisterAttributes(context);
+
+            // PageManager クラスを探して、ページとパスのマッピング情報を取得
+            var source = context.SyntaxProvider
+                .ForAttributeWithMetadataName(
+                    "CSStack.PrimeBlazor.PageManager.BlazorPathManagerAttribute",
+                    static(node, token) => node is ClassDeclarationSyntax,
+                    static(context, token) => context)
+                .Where(static context => context.TargetSymbol is INamedTypeSymbol)
+                .Select((context, token) => ExtractPathMappings(context));
+
+            // マッピング情報を使ってコードを生成
+            // 第1引数の型が第2引数のコールバックの第2引数の型になる
+            context.RegisterSourceOutput(source, Emit);
+        }
+
         /// <summary>
         /// `Route` 属性を持たせるコードを生成
         /// </summary>
-        private static void Emit(
-            SourceProductionContext context,
-            ImmutableArray<RazorPageContext> mappings)
+        private static void Emit(SourceProductionContext context, ImmutableList<RazorPageContext> mappings)
         {
             var sb = new StringBuilder();
             sb.AppendLine("using Microsoft.AspNetCore.Components;");
@@ -24,7 +42,7 @@ namespace CSStack.PrimeBlazor.PageManager
             sb.AppendLine("namespace CSStack.PrimeBlazor.PageManager.TestApp.Components.Pages");
             sb.AppendLine("{");
 
-            foreach(var mapping in mappings)
+            foreach (var mapping in mappings)
             {
                 sb.AppendLine(
                     $$"""
@@ -41,43 +59,41 @@ namespace CSStack.PrimeBlazor.PageManager
         }
 
         /// <summary>
-        /// PagePathManager クラスの情報を解析し、ページとパスのマッピング情報を取得
+        /// PagePathManagerクラスの情報を解析し、ページとパスのマッピング情報を取得
         /// </summary>
-        private static ImmutableArray<RazorPageContext> ExtractPathMappings(
-            GeneratorAttributeSyntaxContext context)
+        private static ImmutableList<RazorPageContext> ExtractPathMappings(GeneratorAttributeSyntaxContext context)
         {
             var classSymbol = (INamedTypeSymbol)context.TargetSymbol;
-            var mappings = ImmutableArray.CreateBuilder<RazorPageContext>();
+            var mappings = ImmutableList.CreateBuilder<RazorPageContext>();
 
-            foreach(var member in classSymbol.GetMembers())
+            foreach (var member in classSymbol.GetMembers())
             {
                 // フィールドまたはプロパティで、BlazorPageAttribute<T> が付いているものを探す
                 ITypeSymbol? memberType = null;
                 string? path = null;
                 INamedTypeSymbol? pageType = null;
 
-                if(member is IFieldSymbol fieldSymbol && fieldSymbol.Type.SpecialType == SpecialType.System_String)
+                if (member is IFieldSymbol fieldSymbol && fieldSymbol.Type.SpecialType == SpecialType.System_String)
                 {
                     memberType = fieldSymbol.Type;
                     path = fieldSymbol.ConstantValue as string;
                     pageType = GetBlazorPageType(fieldSymbol);
                 }
-                else if(member is IPropertySymbol propertySymbol
-                    &&
-                    propertySymbol.Type.SpecialType == SpecialType.System_String)
+                else if (member is IPropertySymbol propertySymbol
+                    && propertySymbol.Type.SpecialType == SpecialType.System_String)
                 {
                     memberType = propertySymbol.Type;
                     path = GetConstantValue(propertySymbol) as string;
                     pageType = GetBlazorPageType(propertySymbol);
                 }
 
-                if(path != null && pageType != null)
+                if (path != null && pageType != null)
                 {
                     mappings.Add(new RazorPageContext() { Path = path, PageName = pageType.Name });
                 }
             }
 
-            return mappings.ToImmutable();
+            return mappings.ToImmutableList();
         }
 
         /// <summary>
@@ -85,9 +101,9 @@ namespace CSStack.PrimeBlazor.PageManager
         /// </summary>
         private static INamedTypeSymbol? GetBlazorPageType(ISymbol symbol)
         {
-            foreach(var attribute in symbol.GetAttributes())
+            foreach (var attribute in symbol.GetAttributes())
             {
-                if(attribute.AttributeClass is { Name: "BlazorPageAttribute", TypeArguments.Length: 1 })
+                if (attribute.AttributeClass is { Name: "BlazorPageAttribute", TypeArguments.Length: 1 })
                 {
                     return attribute.AttributeClass.TypeArguments[0] as INamedTypeSymbol;
                 }
@@ -148,26 +164,6 @@ namespace CSStack.PrimeBlazor.PageManager
                         }
                         """);
                 });
-        }
-
-        /// <inheritdoc/>
-        public void Initialize(IncrementalGeneratorInitializationContext context)
-        {
-            // 属性を使えるように登録
-            RegisterAttributes(context);
-
-            // PageManager クラスを探して、ページとパスのマッピング情報を取得
-            var source = context.SyntaxProvider
-                .ForAttributeWithMetadataName(
-                    "CSStack.PrimeBlazor.PageManager.BlazorPathManagerAttribute",
-                    static(node, token) => node is ClassDeclarationSyntax,
-                    static(context, token) => context)
-                .Where(static context => context.TargetSymbol is INamedTypeSymbol)
-                .Select((context, token) => ExtractPathMappings(context));
-
-            // マッピング情報を使ってコードを生成
-            // 第1引数の型が第2引数のコールバックの第2引数の型になる
-            context.RegisterSourceOutput(source, Emit);
         }
     }
 }
