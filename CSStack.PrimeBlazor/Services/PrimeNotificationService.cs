@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Immutable;
 
 namespace CSStack.PrimeBlazor
 {
@@ -85,6 +85,11 @@ namespace CSStack.PrimeBlazor
         }
 
         /// <summary>
+        /// 通知の状態が変化したときに発生するイベント
+        /// </summary>
+        public event EventHandler? OnNotificationStateChanged;
+
+        /// <summary>
         /// 表示時間を過ぎた通知を削除する
         /// </summary>
         protected void CloseTimeoutNotifications()
@@ -94,11 +99,10 @@ namespace CSStack.PrimeBlazor
                 var targets = NotificationContexts.Where(
                     x => x.IsAutoClose && DateTime.Now > x.StartViewTimeStamp.AddMilliseconds(x.Duration))
                     .ToList();
-                foreach(var target in targets)
-                {
-                    NotificationContexts.Remove(target);
-                }
+                NotificationContexts = NotificationContexts.ToImmutableList().RemoveRange(targets);
             }
+
+            OnNotificationStateChanged?.Invoke(null, EventArgs.Empty);
         }
 
         /// <summary>
@@ -109,12 +113,13 @@ namespace CSStack.PrimeBlazor
         {
             lock(Lock)
             {
-                NotificationContexts.Remove(context);
+                NotificationContexts = NotificationContexts.ToImmutableList().Remove(context);
                 if(!NotificationContexts.Any())
                 {
                     BackgroundParameters["class"] = $"{HiddenClassName} {_backgroundClassName}";
                 }
             }
+            OnNotificationStateChanged?.Invoke(null, EventArgs.Empty);
         }
 
         /// <inheritdoc/>
@@ -131,12 +136,13 @@ namespace CSStack.PrimeBlazor
         {
             lock(Lock)
             {
-                NotificationContexts.Add(context);
+                NotificationContexts = NotificationContexts.ToImmutableList().Add(context);
                 if(NotificationContexts.Any())
                 {
                     BackgroundParameters["class"] = $"{ShowClassName} {_backgroundClassName}";
                 }
             }
+            OnNotificationStateChanged?.Invoke(null, EventArgs.Empty);
         }
 
         /// <summary>
@@ -152,10 +158,11 @@ namespace CSStack.PrimeBlazor
         /// <summary>
         /// ダイアログコンテキストリスト
         /// </summary>
-        public ObservableCollection<PrimeNotificationContext> NotificationContexts
+        public IReadOnlyCollection<PrimeNotificationContext> NotificationContexts
         {
             get;
-        } = new();
+            private set;
+        } = [];
 
         /// <summary>
         /// 表示時のクラス名

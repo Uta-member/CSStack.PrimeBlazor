@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Linq;
 
 namespace CSStack.PrimeBlazor
@@ -11,7 +10,7 @@ namespace CSStack.PrimeBlazor
     /// </summary>
     public partial class PrimeNotificationComponent : IDisposable
     {
-        private void Update(object? sender, NotifyCollectionChangedEventArgs args)
+        private void HandleNotificationStateChanged(object? sender, EventArgs args)
         {
             InvokeAsync(StateHasChanged);
         }
@@ -29,13 +28,13 @@ namespace CSStack.PrimeBlazor
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            NotificationService.NotificationContexts.CollectionChanged += Update;
+            NotificationService.OnNotificationStateChanged += HandleNotificationStateChanged;
         }
 
         /// <inheritdoc/>
         public void Dispose()
         {
-            NotificationService.NotificationContexts.CollectionChanged -= Update;
+            NotificationService.OnNotificationStateChanged -= HandleNotificationStateChanged;
         }
 
         /// <summary>

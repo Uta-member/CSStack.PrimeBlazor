@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 
 namespace CSStack.PrimeBlazor
 {
@@ -9,7 +8,7 @@ namespace CSStack.PrimeBlazor
     /// </summary>
     public partial class PrimeDialogComponent : IDisposable
     {
-        private void Update(object? sender, NotifyCollectionChangedEventArgs args)
+        private void HandleDialogStateChanged(object? sender, EventArgs args)
         {
             InvokeAsync(StateHasChanged);
         }
@@ -23,13 +22,13 @@ namespace CSStack.PrimeBlazor
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            DialogService.DialogContexts.CollectionChanged += Update;
+            DialogService.OnDialogStateChanged += HandleDialogStateChanged;
         }
 
         /// <inheritdoc/>
         public void Dispose()
         {
-            DialogService.DialogContexts.CollectionChanged -= Update;
+            DialogService.OnDialogStateChanged -= HandleDialogStateChanged;
         }
 
         /// <summary>

@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Authors>Uta Sugane</Authors>
     <Description>Blazor向けRCLの開発を支援するパッケージ</Description>
     <PackageIcon>CSStack.png</PackageIcon>

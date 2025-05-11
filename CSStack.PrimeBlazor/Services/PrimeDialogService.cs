@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Immutable;
 
 namespace CSStack.PrimeBlazor
 {
@@ -58,6 +58,11 @@ namespace CSStack.PrimeBlazor
         }
 
         /// <summary>
+        /// ダイアログの状態が変化したときに発生するイベント
+        /// </summary>
+        public event EventHandler? OnDialogStateChanged;
+
+        /// <summary>
         /// ダイアログを閉じる
         /// </summary>
         /// <param name="context">閉じたいダイアログのコンテキスト</param>
@@ -65,12 +70,13 @@ namespace CSStack.PrimeBlazor
         {
             lock(Lock)
             {
-                DialogContexts.Remove(context);
+                DialogContexts = DialogContexts.ToImmutableList().Remove(context);
                 if(!DialogContexts.Any())
                 {
                     BackgroundParameters["class"] = $"{HiddenClassName} {_backgroundClassName}";
                 }
             }
+            OnDialogStateChanged?.Invoke(null, EventArgs.Empty);
         }
 
         /// <summary>
@@ -81,12 +87,13 @@ namespace CSStack.PrimeBlazor
         {
             lock(Lock)
             {
-                DialogContexts.Add(context);
+                DialogContexts = DialogContexts.ToImmutableList().Add(context);
                 if(DialogContexts.Any())
                 {
                     BackgroundParameters["class"] = $"{ShowClassName} {_backgroundClassName}";
                 }
             }
+            OnDialogStateChanged?.Invoke(null, EventArgs.Empty);
         }
 
         /// <summary>
@@ -97,10 +104,11 @@ namespace CSStack.PrimeBlazor
         /// <summary>
         /// ダイアログコンテキストリスト
         /// </summary>
-        public ObservableCollection<PrimeDialogContext> DialogContexts
+        public IReadOnlyCollection<PrimeDialogContext> DialogContexts
         {
             get;
-        } = new();
+            private set;
+        } = [];
 
         /// <summary>
         /// 非表示時のクラス名
