@@ -6,7 +6,7 @@ DialogはHTML/CSSの機能のみでは実装が難しいため、C#やJavaScript
 ダイアログサービスで扱う要素は、大きく「背景」と「ダイアログ」に分けられます。
 背景は基本的にただのdivタグに対して外部から様々なパラメータを渡すことを想定して設計されています。
 ダイアログの本体は`PrimeDialogContext`クラスで情報を管理し、ダイアログサービスの`DialogContexts`というプロパティにインスタンスを保存します。
-`DialogContexts`は`ObservableCollection`型で外部にも公開されています。ただしsetを行ってインスタンスを挿げ替えることはできません。
+`DialogContexts`は`IReadOnlyCollection`で定義されており、外から値の設定ができないようになっています。これは、コレクションの変更通知を確実に行うためです。
 
 ## ダイアログの表示
 ダイアログの表示には`ShowDialog`メソッドを使用します。`PrimeDialogService`には`DialogContext`のインスタンスを受け取って`DialogContexts`に追加をする機能しか備わっていません。
